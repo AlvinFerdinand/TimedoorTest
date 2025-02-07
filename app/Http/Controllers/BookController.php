@@ -23,7 +23,7 @@ class BookController extends Controller
             ])
             ->withSum('votes', 'vote_value');
 
-        // Filter berdasarkan pencarian
+       
         if ($search) {
             $query->where('title', 'LIKE', "%$search%");
         }
@@ -62,7 +62,7 @@ class BookController extends Controller
     public function showRateForm(Request $request)
     {
         $authors = Author::with('books')->get();
-        $books = collect(); // Default kosong
+        $books = collect(); 
 
         if ($request->has('author_id')) {
             $books = Book::where('author_id', $request->author_id)->get();
